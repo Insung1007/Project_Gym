@@ -141,13 +141,11 @@ public class MemberInfoFrame extends JFrame {
         setVisible(true);
     }
     
-    /**
-     * 로그인 시 회원의 현재 이용 상태를 확인하고 버튼과 타이머를 설정합니다.
-     * 오늘 날짜에 시작했지만 종료되지 않은 이용 기록이 있으면 타이머를 이어서 실행합니다.
-     */
+    
+    //로그인 시 회원의 현재 이용 상태를 확인하고 버튼과 타이머를 설정
     private void initializeUsageState() {
         try (Connection conn = DBUtil.getConnection()) {
-            // 오늘 날짜에 시작하고 아직 종료되지 않은 가장 최근의 이용 기록을 찾습니다.
+            // 오늘 날짜에 시작하고 아직 종료되지 않은 가장 최근의 이용 기록 확인
             String sql = "SELECT start_time FROM usage_log WHERE member_id = ? AND end_time IS NULL AND DATE(start_time) = CURDATE() ORDER BY start_time DESC LIMIT 1";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, memberId);
@@ -210,10 +208,9 @@ public class MemberInfoFrame extends JFrame {
         }
     }
 
-    /**
-     * '이용 시작' 버튼 클릭 시 호출됩니다.
-     * usage_log 테이블에 시작 시간을 기록하고 타이머를 시작합니다.
-     */
+
+    //이용 시작 버튼 클릭 시 호출
+    //usage_log 테이블에 시작 시간을 기록하고 타이머를 시작
     private void markStart() {
         LocalDate today = LocalDate.now();
 
@@ -242,10 +239,8 @@ public class MemberInfoFrame extends JFrame {
         endBtn.setEnabled(true);
     }
 
-    /**
-     * '이용 종료' 버튼 클릭 시 호출됩니다.
-     * usage_log 테이블에 종료 시간을 기록하고 타이머를 정지합니다.
-     */
+    //'이용 종료' 버튼 클릭 시 호출
+    //usage_log 테이블에 종료 시간을 기록하고 타이머를 정지
     private void markEnd() {
         if (liveStartTime == null) {
             JOptionPane.showMessageDialog(this, "이용 시작 상태가 아닙니다.");
