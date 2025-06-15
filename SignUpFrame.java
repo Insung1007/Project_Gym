@@ -75,7 +75,7 @@ public class SignUpFrame extends JFrame {
 		emailField.setColumns(10);
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 
