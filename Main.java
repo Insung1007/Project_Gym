@@ -39,6 +39,10 @@ public class Main extends JFrame {
         btnLogin.setBounds(60, 110, 160, 60);
         contentPane.add(btnLogin);
 
+        setLocationRelativeTo(null);
+        setVisible(true);
+    
+
         // 회원가입 창 열기
         btnSignUp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
