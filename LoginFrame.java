@@ -37,6 +37,7 @@ public class LoginFrame extends JFrame {
         getContentPane().add(loginButton);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
