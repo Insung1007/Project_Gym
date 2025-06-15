@@ -12,7 +12,7 @@ public class UsageLog {
             String sql = "INSERT INTO usage_log (member_id, start_time) VALUES (?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, memberId); // 회원 id
-            pstmt.setTimestamp(2, Timestamp.valueOf(startTime)); // 출입 시작 시간
+            pstmt.setTimestamp(2, Timestamp.valueOf(startTime)); // 이용 시작 시간
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
